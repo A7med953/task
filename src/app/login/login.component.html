@@ -1,0 +1,108 @@
+<section class="p-3 p-md-4 p-xl-5 home">
+  <div class="container mt-5">
+    <div class="card shadow-sm overflow-hidden border-0">
+      <div class="row g-0">
+        <div class="col-12 col-md-6">
+          <div class="form p-3 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5">
+                  <h3>Log in</h3>
+                </div>
+              </div>
+            </div>
+            <form #myForm="ngForm">
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+                <div class="col-12">
+                  <label for="EmailId" class="form-label">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="fas fa-envelope"
+                      [ngClass]="{
+                        'text-success': email.valid && email.touched, 
+                        'text-danger': email.invalid && email.touched
+                      }"></i>
+                    </span>
+                    <input 
+                    type="email" 
+                    [(ngModel)]="apiLoginObj.EmailId"
+                    class="form-control"  
+                    name="EmailId" 
+                    id="EmailId" 
+                    placeholder="Email"
+                    #email="ngModel"
+                    required
+                    email>
+                  </div>
+                  <div *ngIf="email.touched && email.invalid" class="text-danger mt-1">
+                    <small *ngIf="email.errors?.['required']">{{'valodtioin.requiredEmail'| translate}}</small>
+                    <small *ngIf="email.errors?.['email']">{{'notrequired'|translate}}</small>
+                  </div>
+                </div>
+            
+                <div class="col-12 ">
+                  <label for="Password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text" (click)="togglePasswordVisibility()" style="cursor: pointer;">
+                      <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </span>
+                    <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    class="form-control" 
+                    [(ngModel)]="apiLoginObj.Password"  
+                    name="Password" 
+                    id="Password" 
+                    placeholder="Password"
+                    #password="ngModel"
+                    required
+                    minlength="6">
+
+                  </div>
+                  <div *ngIf="password.touched && password.invalid" class="text-danger mt-1">
+                    <small *ngIf="password.errors?.['required']">{{'requiredpas'|translate}}</small>
+                    <small *ngIf="password.errors?.['minlength']">{{'minlength'|translate}}</small>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn bsb-btn-xl btn-primary" type="submit" (click)="onLogin()">Login</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-start">
+                  <a class="link-secondary text-decoration-none" routerLink="/register" routerLinkActive="active_link" >Create new account</a>
+                  <a class="link-secondary text-decoration-none" routerLink="/forget" routerLinkActive="active_link">Forgot password</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-3 d-none d-md-block bg-primary">
+          <div class="title">
+            <h2 class="text-light mt-2 d-flex justify-content-center align-items-center">Logo</h2>
+            <p class="d-flex justify-content-center align-items-center fs-2 text-light">Welcome! Please login</p>
+          </div>
+          <div class="row justify-content-center pt-2">
+            <div class="col-md-11">
+              <div class="card-img">
+                <img src="/assets/images/work-07.jpg" class="img-fluid w-100" alt="Card Image">
+                <div class="overlay">
+                  <div>
+                    <h5>Card Title</h5>
+                    <p>Additional information appears on hover.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

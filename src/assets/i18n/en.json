@@ -1,0 +1,10 @@
+{
+    "valodtioin":{
+        "requiredEmail":"Email is required."
+    },
+    "notrequired":"Enter a valid email.",
+    "requiredpas":"Password is required.",
+    "minlength":"Password must be at least 6 characters."
+
+
+}
